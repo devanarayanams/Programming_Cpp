@@ -131,8 +131,8 @@ public:
 // Main function
 int main() {
     // Create media items
-    Image* image1 = new Image("Image1", "2024-05-07", 1024, ImageType::JPEG);
-    Video* video1 = new Video("Video1", "2024-05-07", 2048, VideoType::MP4);
+    Image image1("Image1", "2024-05-07", 1024, ImageType::JPEG);
+    Video video1("Video1", "2024-05-07", 2048, VideoType::MP4);
 
     // Create sharing instances
     BluetoothSharing bluetoothSharing;
@@ -140,15 +140,16 @@ int main() {
     EmailSharing emailSharing;
 
     // Share media items
-    bluetoothSharing.share(*image1);
-    whatsAppSharing.share(*video1);
-    emailSharing.share(*image1);
+    bluetoothSharing.share(image1);
+    whatsAppSharing.share(video1);
+    emailSharing.share(image1);
 
     // Create gallery manager
     GalleryManager galleryManager;
-    galleryManager.addItem(image1);
-    galleryManager.addItem(video1);
+    galleryManager.addItem(&image1);
+    galleryManager.addItem(&video1);
     galleryManager.displayAll();
 
     return 0;
 }
+
