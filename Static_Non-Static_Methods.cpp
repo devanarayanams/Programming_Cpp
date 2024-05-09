@@ -33,3 +33,8 @@ int main() {
 
     return 0;
 }
+
+/*
+getValue() is a non-static method of the MyClass class. It is called on a specific instance of MyClass (object obj).
+doubleValue() is a static method of the MyClass class. It does not require an instance of MyClass to be called and can be accessed using the class name (MyClass::doubleValue()).
+*/
