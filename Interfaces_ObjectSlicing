@@ -1,0 +1,53 @@
+// Interface
+#include <string>
+#include <iostream>
+using namespace std;
+
+class IEmployee {
+public:
+	virtual void professional() = 0;
+};
+
+class IFamilyMember {
+public:
+	virtual void casual() = 0;
+	virtual void cranky() = 0;
+};
+
+// Person fullfills (implements) IEmployee Contract
+class Person : public IEmployee, public IFamilyMember{
+public: 
+	void casual() {};
+	void professional() {};
+	void cranky() {};
+};
+
+class OfficeContext {
+public:
+	void Enter(IEmployee* obj) {
+		obj->professional();
+	}
+};
+
+class FamilyContext {
+public:
+	void Enter(Person* obj) {
+		obj->casual();
+		obj->cranky();
+		
+	}
+};
+
+int main() {
+	Person dev;
+	FamilyContext fContext;
+	OfficeContext oContext;
+	fContext.Enter(&dev);
+	oContext.Enter(&dev);
+
+	Person Har; // Runtime Polymorphism
+	fContext.Enter(&Har);
+	oContext.Enter(&Har);
+
+
+}
